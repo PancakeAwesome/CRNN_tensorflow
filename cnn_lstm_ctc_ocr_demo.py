@@ -39,13 +39,13 @@ class LSTMOCR(object):
                 # in_channels：1 ocr的输入图像为灰度图
                 x = self._conv2d(self.inputs, 'con-1', 3, 1, filters[0], strides[0])
                 x = self._batch_norm('bn1', x)
-                x = self._leaky_relu(x, 001)
+                x = self._leaky_relu(x, 0.01)
                 x = self._max_pool(x, 2, strides[1])
 
             with tf.variable_scope('unit-2'):
                 x = self._conv2d(x, 'cnn-2', 3, filters[0], filters[1], strides[0])
                 x = self._batch_norm('bn2', x)
-                x = self._leaky_relu(x, 0,01)
+                x = self._leaky_relu(x, 0.01)
                 x = self._max_pool(x, 2, strides[1])
 
             with tf.VariableScope('unit-3'):
