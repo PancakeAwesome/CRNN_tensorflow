@@ -62,8 +62,9 @@ class LSTMOCR(object):
 
         # LSTM part
         with tf.variable_scope('lstm'):
-            # 将feature_maps向量化，变成3d
+            # 将feature_maps向量化，变成3d：[batchsize, w*h, outchannels]
             # filters[3]是timestep，也是最后一层cnn的outchannels
+            # 每个lstm单元的输入是一个特征纤维，这一点是和ctpn一样的，只不过ctpn的timestep是w行
             # tf.nn.sigmoid_cross_entropy_with_logits()
             x = tf.reshape(x, [FLAGS.batch_size, -1, filters[3]])
             x = tf.transpose(x, [0, 2, 1])

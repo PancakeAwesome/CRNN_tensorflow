@@ -45,6 +45,7 @@ FLAGS = tf.app.flags.FLAGS
 charset = '0123456789+-*()'
 encode_maps = {}
 decode_maps = {}
+
 # 构造字典
 for i, char in enumerate(charset, 1):
     encode_maps[char] = i
